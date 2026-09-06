@@ -13,47 +13,57 @@ Skill สำหรับแปลงเสียงหรือวิดีโ�
 
 ## ติดตั้ง
 
-Repository นี้เป็น Private ต้องใช้บัญชี GitHub ที่มีสิทธิ์เข้าถึงและตั้งค่า Git authentication ก่อน
-คำสั่งด้านล่างต้องใช้ Git และ shell ที่รองรับรูปแบบ POSIX
-หากโฟลเดอร์ปลายทางมีอยู่แล้ว อย่าเขียนทับ ให้ตรวจเวอร์ชันเดิมและสำรองการแก้ไขก่อนอัปเดต
+เปิดแชตกับ Codex, Claude Code หรือ agent ที่ใช้อยู่ แล้ววางข้อความนี้ได้เลย:
 
-### Codex
+```text
+ช่วยติดตั้ง skill convert-prd จาก repo นี้ให้ใช้งานใน agent ที่ฉันกำลังใช้:
+https://github.com/NUX-Design/convert-prd
 
-```sh
-git clone https://github.com/NUX-Design/convert-prd.git "${CODEX_HOME:-$HOME/.codex}/skills/convert-prd"
+คุณเข้าถึง repo นี้ได้แล้ว ให้ติดตั้ง SKILL.md พร้อม references และไฟล์ประกอบให้ครบ
+เลือกตำแหน่งติดตั้งที่ agent นี้รองรับ ตรวจสอบว่าติดตั้งสำเร็จ แล้วบอกวิธีเรียกใช้ให้ฉันด้วย
+หากมี skill เวอร์ชันเดิมอยู่แล้ว ให้ตรวจและรักษาการแก้ไขในเครื่องก่อนอัปเดต
 ```
 
-เรียกใช้:
+ไม่ต้องรันคำสั่ง Terminal เอง โดย agent ต้องมีเครื่องมือเข้าถึง GitHub และเขียนไฟล์ในเครื่องได้ Repo นี้เป็น Private จึงต้องใช้บัญชีที่มีสิทธิ์เข้าถึง หาก agent ยังเข้าถึงไม่ได้ ให้เชื่อมต่อ GitHub ใน agent นั้นก่อน
+
+### ตัวอย่างสั้นสำหรับแต่ละ agent
+
+**Codex**
+
+```text
+ติดตั้ง skill นี้ใน Codex ให้หน่อย https://github.com/NUX-Design/convert-prd
+```
+
+**Claude Code**
+
+```text
+ติดตั้ง skill นี้ใน Claude Code ให้ใช้ได้ทุกโปรเจกต์ https://github.com/NUX-Design/convert-prd
+```
+
+**Agent อื่น ๆ**
+
+```text
+ติดตั้ง skill นี้ให้ใช้งานกับ agent นี้ https://github.com/NUX-Design/convert-prd
+ตรวจรูปแบบและตำแหน่ง skills ที่รองรับ พร้อมคัดลอกไฟล์อ้างอิงให้ครบด้วย
+```
+
+Agent ที่ไม่มีระบบติดตั้ง skills หรือไม่มีสิทธิ์เขียนไฟล์ อาจต้องให้ผู้ใช้ติดตั้งเองตามวิธีของแพลตฟอร์มนั้น
+
+## เรียกใช้งานหลังติดตั้ง
+
+สำหรับ Codex:
 
 ```text
 ใช้ $convert-prd แปลงไฟล์เสียงที่แนบเป็น PRD.md
 ```
 
-### Claude Code
-
-ติดตั้งสำหรับผู้ใช้:
-
-```sh
-git clone https://github.com/NUX-Design/convert-prd.git "$HOME/.claude/skills/convert-prd"
-```
-
-หรือติดตั้งเฉพาะโปรเจกต์ โดยรันจากโฟลเดอร์โปรเจกต์:
-
-```sh
-git clone https://github.com/NUX-Design/convert-prd.git .claude/skills/convert-prd
-```
-
-เรียกใช้:
+สำหรับ Claude Code:
 
 ```text
 /convert-prd แปลงไฟล์เสียงที่แนบเป็น PRD.md
 ```
 
-### Agent อื่น ๆ
-
-สำหรับ agent ที่รองรับ Agent Skills ให้ clone หรือคัดลอก repo ทั้งชุดเป็นโฟลเดอร์ `convert-prd` ในตำแหน่ง skills ที่ agent นั้นกำหนด โดยเก็บ `SKILL.md` และ `references/` ไว้ด้วยกัน ตำแหน่งติดตั้งและวิธีเรียกใช้ขึ้นกับ agent ไม่ใช่ทุก agent จะค้นพบ skill อัตโนมัติ
-
-หาก agent อ่านไฟล์ Markdown ได้แต่ไม่มีระบบ skills ให้ระบุให้ agent อ่าน `SKILL.md` และไฟล์อ้างอิงตามขั้นตอนโดยตรง
+สำหรับ agent อื่น ให้ใช้วิธีเรียกที่ agent แจ้งหลังติดตั้ง พร้อมแนบไฟล์เสียงหรือระบุ path ของไฟล์
 
 ## สิ่งที่ต้องมีและข้อจำกัด
 
@@ -80,7 +90,12 @@ convert-prd/
 
 ## อัปเดต
 
-รัน `git pull --ff-only` ภายในโฟลเดอร์ที่ clone หลังตรวจว่าการแก้ไขในเครื่องถูกเก็บแล้ว
+วางข้อความนี้ใน agent ที่ติดตั้ง skill ไว้:
+
+```text
+อัปเดต skill convert-prd จาก https://github.com/NUX-Design/convert-prd ให้หน่อย
+ตรวจเวอร์ชันที่ติดตั้งและรักษาการแก้ไขในเครื่องก่อนอัปเดต แล้วตรวจว่าไฟล์ประกอบครบ
+```
 
 ## เอกสารอ้างอิง
 
