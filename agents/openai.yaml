@@ -1,0 +1,3 @@
+interface:
+  display_name: "Convert PRD"
+  short_description: "แปลงเสียงประชุมเป็น Transcript, Requirements และ PRD"
